@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app: movie-service
-  name: movie_service
+  name: movie-service
   namespace: default
 spec:
   ports:

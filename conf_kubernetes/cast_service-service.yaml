@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: cast-service
-  name: cast_service
+  name: cast-service
   namespace: default
 spec:
   ports:

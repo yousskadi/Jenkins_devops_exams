@@ -29,7 +29,7 @@ spec:
           env:
             - name: DATABASE_URI
               value: postgresql://cast_db_username:cast_db_password@cast_db/cast_db_dev
-          image: cast-service
+          image: ykadi/cast-service:latest
           name: cast-service
           ports:
             - containerPort: 8000
