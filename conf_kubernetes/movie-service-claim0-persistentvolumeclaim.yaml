@@ -3,7 +3,6 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: movie-service-claim0
   name: movie-service-claim0
   namespace: default
 spec:

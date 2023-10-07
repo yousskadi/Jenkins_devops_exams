@@ -1,12 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose -f docker-compose.yml convert
-    kompose.version: 1.30.0 (9d8dcb518)
   creationTimestamp: null
   labels:
-    io.kompose.service: movie-service
+    app: movie-service
   name: movie_service
   namespace: default
 spec:
@@ -15,6 +12,6 @@ spec:
       port: 8001
       targetPort: 8000
   selector:
-    io.kompose.service: movie-service
+    app: movie-service
 status:
   loadBalancer: {}
