@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress
+  namespace: default
+  labels:
+    name: myingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: jenkins-exam.local
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/api/v1/casts"
+        backend:
+          service:
+            name: cast-service
+            port: 
+              number: 8000
+      - pathType: Prefix
+        path: "/api/v1/movies"
+        backend:
+          service:
+            name: movie-service
+            port: 
+              number: 8000
