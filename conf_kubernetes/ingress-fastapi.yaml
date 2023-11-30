@@ -4,13 +4,13 @@ metadata:
   name: myingress
   namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    #nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
     name: myingress
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   rules:
-  - host: jenkins-exal.devops-youss.cloudns.ph
+  - host: jenkins.devops-youss.cloudns.ph
     http:
       paths:
       - pathType: Prefix

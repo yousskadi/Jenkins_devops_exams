@@ -26,6 +26,9 @@ spec:
               value: cast_db_username
           image: postgres:12.1-alpine
           name: cast-db
+          ports:
+            - containerPort: 5432
+              protocol: TCP
           resources: {}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
@@ -35,4 +38,4 @@ spec:
         - name: postgres-data-cast
           persistentVolumeClaim:
             claimName: postgres-data-cast
-status: {}
+

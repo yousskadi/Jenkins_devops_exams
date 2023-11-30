@@ -26,6 +26,9 @@ spec:
               value: movie_db_username
           image: postgres:12.1-alpine
           name: movie-db
+          ports:
+            - containerPort: 5432
+              protocol: TCP
           resources: {}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
@@ -35,4 +38,4 @@ spec:
         - name: postgres-data-movie
           persistentVolumeClaim:
             claimName: postgres-data-movie
-status: {}
+

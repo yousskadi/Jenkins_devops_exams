@@ -30,19 +30,19 @@ spec:
             - name: CAST_SERVICE_HOST_URL
               value: http://cast_service:8000/api/v1/casts/
             - name: DATABASE_URI
-              value: postgresql://movie_db_username:movie_db_password@movie_db/movie_db_dev
-          image: ykadi/movie-service:latest
+              value: postgresql://movie_db_username:movie_db_password@movie-db-svc/movie_db_dev
+          image: ykadi/movie-service:v1
           name: movie-service
           ports:
             - containerPort: 8000
               protocol: TCP
           resources: {}
-          volumeMounts:
-            - mountPath: /app
-              name: movie-service-claim0
+          # volumeMounts:
+          #   - mountPath: /app
+          #     name: movie-service-claim0
       restartPolicy: Always
-      volumes:
-        - name: movie-service-claim0
-          persistentVolumeClaim:
-            claimName: movie-service-claim0
+      # volumes:
+      #   - name: movie-service-claim0
+      #     persistentVolumeClaim:
+      #       claimName: movie-service-claim0
 status: {}

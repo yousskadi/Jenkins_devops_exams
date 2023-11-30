@@ -28,20 +28,19 @@ spec:
             - "8000"
           env:
             - name: DATABASE_URI
-              value: postgresql://cast_db_username:cast_db_password@cast_db/cast_db_dev
-          image: ykadi/cast-service:latest
+              value: postgresql://cast_db_username:cast_db_password@cast-db-svc/cast_db_dev
+          image: ykadi/cast-service:v1
           name: cast-service
           ports:
             - containerPort: 8000
-              hostPort: 8002
               protocol: TCP
           resources: {}
-          volumeMounts:
-            - mountPath: /app
-              name: cast-service-claim0
+          # volumeMounts:
+          #   - mountPath: /app
+          #     name: cast-service-claim0
       restartPolicy: Always
-      volumes:
-        - name: cast-service-claim0
-          persistentVolumeClaim:
-            claimName: cast-service-claim0
+      # volumes:
+      #   - name: cast-service-claim0
+      #     persistentVolumeClaim:
+      #       claimName: cast-service-claim0
 status: {}
