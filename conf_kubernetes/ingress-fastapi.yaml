@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: myingress
   namespace: default
-  annotations:
+  #annotations:
     #nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
     name: myingress
