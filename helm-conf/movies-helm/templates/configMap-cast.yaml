@@ -16,4 +16,4 @@ metadata:
   name: {{ .Values.cast_svc.configMap }}
   namespace: {{ .Values.namespace }}
 data:
-  DATABASE_URI: postgresql://cast_db_username:cast_db_password@cast-db/cast_db_dev
+  DATABASE_URI: postgresql://cast_db_username:cast_db_password@cast-db-svc/cast_db_dev

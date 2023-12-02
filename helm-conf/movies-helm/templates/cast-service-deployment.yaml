@@ -28,7 +28,7 @@ spec:
             - "8000"
           env:
             - name: DATABASE_URI
-              value: postgresql://cast_db_username:cast_db_password@cast-db/cast_db_dev
+              value: postgresql://cast_db_username:cast_db_password@cast-db-svc/cast_db_dev
           image: "{{ .Values.cast_svc.image.name }}:{{ .Values.cast_svc.image.tag }}"
           name: cast-service
           ports:

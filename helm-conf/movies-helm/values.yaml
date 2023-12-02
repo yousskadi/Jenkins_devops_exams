@@ -45,8 +45,7 @@ movie_svc:
 
 
 
-podAnnotations: {}
-podLabels: {}
+
 
 
 

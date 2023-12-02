@@ -18,15 +18,11 @@ spec:
     spec:
       containers:
         - env:
-            # - name: POSTGRES_DB
-            #   value: cast_db_dev
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.cast_db.secret }}
                   key: password
-            # - name: POSTGRES_USER
-            #   value: cast_db_username
           envFrom:
             - configMapRef:
                 name: {{ .Values.cast_db.configMap }}  
