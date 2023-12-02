@@ -6,7 +6,7 @@ metadata:
   name: movie-db
   namespace: {{ .Values.namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.cast_db.replicaCount }}
   serviceName: movie-db
   selector:
     matchLabels:
@@ -27,7 +27,7 @@ spec:
           image: postgres:12.1-alpine
           name: movie-db
           ports:
-            - containerPort: 5432
+            - containerPort: {{ .Values.movie_db.containerPort }}
               protocol: TCP
           resources: {}
           volumeMounts:

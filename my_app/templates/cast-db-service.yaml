@@ -9,6 +9,6 @@ spec:
   ports:
     - name: tcp
       port: 5432
-      targetPort: 5432
+      targetPort: {{ .Values.cast_db.containerPort }}
   selector:
     app: {{ .Values.cast_db.app }}

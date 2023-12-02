@@ -9,7 +9,7 @@ spec:
   ports:
     - name: http
       port: 8000
-      targetPort: 8000
+      targetPort: {{ .Values.cast_svc.containerPort }}
   selector:
     app: {{ .Values.cast_svc.app }}
 status:

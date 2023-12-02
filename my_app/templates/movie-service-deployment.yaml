@@ -6,7 +6,7 @@ metadata:
   name: movie-service
   namespace: {{ .Values.namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.cast_db.replicaCount }}
   selector:
     matchLabels:
       app: {{ .Values.movie_svc.app }}
@@ -31,10 +31,10 @@ spec:
               value: http://cast_service:8000/api/v1/casts/
             - name: DATABASE_URI
               value: postgresql://movie_db_username:movie_db_password@movie-db-svc/movie_db_dev
-          image: ykadi/movie-service:v1
+          image: "{{ .Values.movie_svc.image.name }}:{{ .Values.movie_svc.image.tag }}"
           name: movie-service
           ports:
-            - containerPort: 8000
+            - containerPort: {{ .Values.movie_svc.containerPort }}
               protocol: TCP
           resources: {}
           # volumeMounts:
