@@ -6,7 +6,7 @@ metadata:
   name: cast-service
   namespace: {{ .Values.namespace }}
 spec:
-  replicas: {{ .Values.cast_svc.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
       app: {{ .Values.cast_svc.app }}
@@ -29,10 +29,10 @@ spec:
           env:
             - name: DATABASE_URI
               value: postgresql://cast_db_username:cast_db_password@cast-db-svc/cast_db_dev
-          image: "{{ .Values.cast_svc.image.name }}:{{ .Values.cast_svc.image.tag }}"
+          image: ykadi/cast-service:v1
           name: cast-service
           ports:
-            - containerPort: {{ .Values.cast_svc.containerPort }}
+            - containerPort: 8000
               protocol: TCP
           resources: {}
           # volumeMounts:

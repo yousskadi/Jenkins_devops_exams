@@ -1,0 +1,43 @@
+namespace: movie-app
+
+
+### Casts app Values ###
+
+cast_db:
+   app: cast-db
+   containerPort: 5432    
+   replicaCount: 1
+   configMap: cast-db-conf
+   secret: cast-db-password
+
+   
+
+cast_svc:
+  app: cast-service
+  replicaCount: 1
+  containerPort: 8000  
+  image:
+    name: ykadi/cast-service
+    pullPolicy: IfNotPresent
+    tag: "v1"
+  configMap: cast-svc-conf
+
+
+### Movies app Values ###
+
+movie_db:
+   app: movie-db
+   containerPort: 5432 
+   replicaCount: 1 
+   configMap: movie-db-conf
+   secret: movie-db-password
+
+movie_svc:
+  app: movie-service
+  replicaCount: 1
+  containerPort: 8000  
+  image:
+    name: ykadi/movie-service
+    pullPolicy: IfNotPresent
+    tag: "v1"
+  configMap: movie-svc-conf 
