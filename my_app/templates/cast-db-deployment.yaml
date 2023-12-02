@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   labels:
     app: {{ .Values.cast_db.app }}
-  name: cast-db
+  name: {{ .Values.cast_db.name }}
   namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.cast_db.replicaCount }}
@@ -31,11 +31,11 @@ spec:
               protocol: TCP
           resources: {}
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgres-data-cast
+            - mountPath: {{ .Values.volumeMounts.mountPath }}
+              name: {{ .Values.volumeMounts.name }}
       restartPolicy: Always
       volumes:
-        - name: postgres-data-cast
+        - name: {{ .Values.volumeMounts.name }}
           persistentVolumeClaim:
-            claimName: postgres-data-cast
+            claimName: {{ .Values.volumes.claimName }}
 

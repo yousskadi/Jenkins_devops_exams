@@ -3,12 +3,12 @@ kind: PersistentVolumeClaim
 metadata:
   labels:
     app: postgres-data-cast
-  name: postgres-data-cast
+  name: {{ .Values.volumes.claimName }}
   namespace: {{ .Values.namespace }}
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: {{ .Values.resources.storage }}
 status: {}

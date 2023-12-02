@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: {{ .Values.movie_svc.app }}
-  name: movie-service
+  name: {{ .Values.movie_svc.name }}
   namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.cast_db.replicaCount }}
@@ -37,12 +37,5 @@ spec:
             - containerPort: {{ .Values.movie_svc.containerPort }}
               protocol: TCP
           resources: {}
-          # volumeMounts:
-          #   - mountPath: /app
-          #     name: movie-service-claim0
       restartPolicy: Always
-      # volumes:
-      #   - name: movie-service-claim0
-      #     persistentVolumeClaim:
-      #       claimName: movie-service-claim0
 status: {}

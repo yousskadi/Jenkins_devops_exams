@@ -3,12 +3,12 @@ kind: PersistentVolumeClaim
 metadata:
   labels:
     app: postgres-data-movie
-  name: postgres-data-movie
+  name: {{ .Values.movie_db.volumes.claimName }}
   namespace: {{ .Values.namespace }}
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: {{ .Values.movie_db.resources.storage }}
 status: {}

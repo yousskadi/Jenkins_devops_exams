@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: {{ .Values.cast_svc.app }}
-  name: cast-service
+  name: {{ .Values.cast_svc.name }}
   namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.cast_db.replicaCount }}
@@ -35,12 +35,5 @@ spec:
             - containerPort: {{ .Values.cast_svc.containerPort }}
               protocol: TCP
           resources: {}
-          # volumeMounts:
-          #   - mountPath: /app
-          #     name: cast-service-claim0
       restartPolicy: Always
-      # volumes:
-      #   - name: cast-service-claim0
-      #     persistentVolumeClaim:
-      #       claimName: cast-service-claim0
 status: {}

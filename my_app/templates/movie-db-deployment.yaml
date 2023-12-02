@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   labels:
     app: {{ .Values.movie_db.app }}
-  name: movie-db
+  name: {{ .Values.movie_db.name }}
   namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.cast_db.replicaCount }}
@@ -31,11 +31,11 @@ spec:
               protocol: TCP
           resources: {}
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgres-data-movie
+            - mountPath: {{ .Values.movie_db.volumeMounts.mountPath }}
+              name: {{ .Values.movie_db.volumeMounts.name }}
       restartPolicy: Always
       volumes:
-        - name: postgres-data-movie
+        - name: {{ .Values.movie_db.volumeMounts.name }}
           persistentVolumeClaim:
-            claimName: postgres-data-movie
+            claimName: {{ .Values.movie_db.volumes.claimName }}
 
