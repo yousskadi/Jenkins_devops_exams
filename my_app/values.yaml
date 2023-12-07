@@ -65,3 +65,24 @@ movie_svc:
     pullPolicy: IfNotPresent
     tag: "v1"
   configMap: movie-svc-conf 
+
+
+
+#### Ingress Values ###
+
+ingress:
+  enabled: true
+  name: myingress
+  className: "traefik"
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: jenkins.devops-youss.cloudns.ph
+  #     paths:
+  #       - path: /api/v1/casts
+  #         pathType: Prefix
+  # tls: []
+  # #  - secretName: chart-example-tls
+  # #    hosts:
+  # #      - chart-example.local
