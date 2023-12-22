@@ -94,6 +94,21 @@ agent any
             }
         }
 
+        stage('Deployement test') {
+            steps {
+                script {
+                    sh '''
+                    echo "Installation Projet Jenkins 2023"
+                    sed -i "s+tag.*+tag: ${DOCKER_TAG}+g" my_app/values.yaml
+                    helm upgrade --install my-app-v1 my_app/ --values my_app/values.yaml -n movie-app --create-namespace   
+                    sleep 10
+                    '''
+                }                           
+            }
+        } 
+
+
+
     //     stage('Dev deployment') {
     //         steps {
     //             script {
