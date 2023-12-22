@@ -38,7 +38,7 @@ agent any
                      
                         // sh 'cd local-test'
                         sh 'pwd'
-                        sh 'docker-compose build'
+                        sh 'docker compose build'
                         sh 'sleep 6'
                     
                 }
@@ -48,7 +48,7 @@ agent any
         stage('Docker image up') {
                 steps {
                 script {
-                        sh 'docker-compose up -d'
+                        sh 'docker compose up -d'
                         // sh ' cd .. '
                         sh 'sleep 10'
                         
