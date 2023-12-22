@@ -80,17 +80,19 @@ agent any
             }
         }
         
-    //     // Push the docker image built on dockerhub
-    //     stage('Docker Push') { 
-    //         steps {
-    //             script {
-    //             sh '''
-    //             docker login -u $DOCKER_ID -p $DOCKER_PASS
-    //             docker push $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG
-    //             '''
-    //             }
-    //         }
-    //     }
+        // Push the docker image built on dockerhub
+        stage('Docker Push') { 
+            steps {
+                script {
+                sh '''
+                docker login -u $DOCKER_ID -p $DOCKER_PASS
+                docker push $DOCKER_ID/$DOCKER_IMAGE_CAST:$DOCKER_TAG
+                docker push $DOCKER_ID/$DOCKER_IMAGE_MOVIE:$DOCKER_TAG
+
+                '''
+                }
+            }
+        }
 
     //     stage('Dev deployment') {
     //         steps {
