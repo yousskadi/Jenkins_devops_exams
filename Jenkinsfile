@@ -25,7 +25,7 @@ pipeline {
     }
     stage('Run tests against the container') {
       steps {
-        sh 'curl http://localhost:8000 | jq'
+        sh 'curl http://localhost:8001/api/v1/casts/docs | jq'
       }
     }
   }
