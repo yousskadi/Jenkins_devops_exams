@@ -4,7 +4,7 @@ pipeline {
     DOCKER_IMAGE_CAST = "cast-service"
     DOCKER_IMAGE_MOVIE = "movie-service"
     DOCKER_TAG = "v.${BUILD_ID}.0" // we will tag our images with the current build in order to increment the value by 1 with each new build
-    KUBECONFIG = credentials("EKS-config") // we retrieve  kubeconfig from secret file called config saved on jenkins
+    KUBECONFIG = credentials("config") // we retrieve  kubeconfig from secret file called config saved on jenkins
     DOCKER_PASS = credentials("DOCKER_HUB_PASS")
     AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
