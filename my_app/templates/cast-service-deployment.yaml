@@ -2,27 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: cast-service
-  name: cast-service
-  namespace: default
+    app: {{ .Values.cast_svc.app }}
+  name: {{ .Values.cast_svc.name }}
+  namespace: {{ .Values.namespace }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.cast_db.replicaCount }}
   selector:
     matchLabels:
-      app: cast-service
+      app: {{ .Values.cast_svc.app }}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: cast-service
+        app: {{ .Values.cast_svc.app }}
     spec:
       initContainers:
       - name: check-db-ready
         image: postgres:9.6.5
         command: ['sh', '-c', 
           'until pg_isready -h cast-db-svc -p 5432; 
-          do echo waiting for database; sleep 2; done;']
+          do echo waiting for database; sleep 2; done;']    
       containers:
         - args:
             - uvicorn
@@ -35,18 +35,11 @@ spec:
           env:
             - name: DATABASE_URI
               value: postgresql://cast_db_username:cast_db_password@cast-db-svc/cast_db_dev
-          image: ykadi/cast-service:v1
+          image: "{{ .Values.cast_svc.image.name }}:{{ .Values.cast_svc.image.tag }}"
           name: cast-service
           ports:
-            - containerPort: 8000
+            - containerPort: {{ .Values.cast_svc.containerPort }}
               protocol: TCP
           resources: {}
-          # volumeMounts:
-          #   - mountPath: /app
-          #     name: cast-service-claim0
       restartPolicy: Always
-      # volumes:
-      #   - name: cast-service-claim0
-      #     persistentVolumeClaim:
-      #       claimName: cast-service-claim0
 status: {}
