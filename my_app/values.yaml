@@ -31,7 +31,7 @@ cast_svc:
   image:
     name: ykadi/cast-service
     pullPolicy: IfNotPresent
-    tag: "v1"
+    tag: 
   configMap: cast-svc-conf
 
 
@@ -63,7 +63,7 @@ movie_svc:
   image:
     name: ykadi/movie-service
     pullPolicy: IfNotPresent
-    tag: "v1"
+    tag: 
   configMap: movie-svc-conf 
 
 
