@@ -3,11 +3,16 @@ kind: Ingress
 metadata:
   name: myingress
   namespace: default
-  #annotations:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod 
     #nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
     name: myingress
 spec:
+  tls:
+  - hosts:
+    - jenkins.devops-youss.cloudns.ph
+    secretName: letsencrypt-prod
   ingressClassName: traefik
   rules:
   - host: jenkins.devops-youss.cloudns.ph

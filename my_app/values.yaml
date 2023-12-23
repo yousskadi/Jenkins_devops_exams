@@ -82,7 +82,17 @@ ingress:
   #     paths:
   #       - path: /api/v1/casts
   #         pathType: Prefix
-  # tls: []
-  # #  - secretName: chart-example-tls
+  # tls: true
+  tlssecret: letsencrypt-prod-tls
   # #    hosts:
   # #      - chart-example.local
+
+
+### CluserIssuer ######
+
+ClusterIssuer:
+  enabled: true
+  name: letsencrypt-prod
+  privateKeySecretRef:
+      name:  issuer-letsencrypt-prod
+  ingressclass: nginx

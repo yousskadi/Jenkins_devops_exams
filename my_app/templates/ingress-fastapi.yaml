@@ -4,11 +4,18 @@ kind: Ingress
 metadata:
   name: {{ .Values.ingress.name }}
   namespace: {{ .Values.namespace }}
-  #annotations:
+  annotations:
     #nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: {{ .Values.ClusterIssuer.name }}
   labels:
     name: myingress
 spec:
+  tls:
+   - hosts:
+    {{- range .Values.ingress.hosts }}
+     - host: {{ .host | quote }}
+    {{- end }}
+     secretName: {{ .Values.ingress.tlssecret }}
   ingressClassName: {{ .Values.ingress.className }}
   rules:
    {{- range .Values.ingress.hosts }}
