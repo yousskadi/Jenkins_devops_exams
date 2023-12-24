@@ -1,4 +1,4 @@
-{{- if .Values.ingress.enabled -}}
+{{- if .Values.ClusterIssuer.enabled -}}
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
@@ -15,5 +15,5 @@ spec:
     solvers:
     - http01:
         ingress:
-          class: {{ .Values.ClusterIssuer.ingressclass }}
+          class: {{ .Values.ingress.className }}
 {{- end }}

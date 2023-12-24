@@ -31,7 +31,7 @@ cast_svc:
   image:
     name: ykadi/cast-service
     pullPolicy: IfNotPresent
-    tag: 
+    tag: v.11.0
   configMap: cast-svc-conf
 
 
@@ -63,7 +63,7 @@ movie_svc:
   image:
     name: ykadi/movie-service
     pullPolicy: IfNotPresent
-    tag: 
+    tag: v.11.0
   configMap: movie-svc-conf 
 
 
@@ -95,4 +95,4 @@ ClusterIssuer:
   name: letsencrypt-prod
   privateKeySecretRef:
       name:  issuer-letsencrypt-prod
-  ingressclass: nginx
+  #ingressclass: nginx

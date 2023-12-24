@@ -4,3 +4,23 @@ namespace: dev
 ### CluserIssuer ######
 ClusterIssuer:
   enabled: false
+
+
+#### Ingress Values ###
+
+ingress:
+  enabled: true
+  name: myingress-dev
+  className: "traefik"
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: dev.devops-youss.cloudns.ph
+  #     paths:
+  #       - path: /api/v1/casts
+  #         pathType: Prefix
+  # tls: true
+  tlssecret: letsencrypt-dev-tls
+  # #    hosts:
+  # #      - chart-example.local

@@ -13,13 +13,13 @@ spec:
   tls:
    - hosts:
     {{- range .Values.ingress.hosts }}
-     - host: {{ .host | quote }}
+     - {{ .host }}
     {{- end }}
      secretName: {{ .Values.ingress.tlssecret }}
   ingressClassName: {{ .Values.ingress.className }}
   rules:
    {{- range .Values.ingress.hosts }}
-  - host: {{ .host | quote }}
+  - host: {{ .host }}
    {{- end }}
     http:
       paths:
